@@ -1,0 +1,48 @@
+.space-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: black;
+    z-index: -1; /* Places the starfield behind the card */
+}
+
+    .space-background .star-space-background {
+        position: absolute;
+        border-radius: 50%;
+        background: white;
+        opacity: 0.8;
+        transform-origin: center;
+    }
+
+@keyframes move {
+    0% {
+        transform: translate(-50%, -50%) translate(0, 0);
+    }
+
+    100% {
+        transform: translate(-50%, -50%) translate(var(--x), var(--y));
+    }
+}
+
+.card {
+    height: 400px;
+    position: relative;
+    z-index: 1;
+}
+
+.card-title{
+    font-family: 'Segoe Print';
+}
+
+.card-text{
+    font-family: 'Segoe Script'
+}
+
+.pi-progress {
+    background: linear-gradient(to right, rgb(255, 255, 255, 1.00), rgb(255, 255, 255, 0.00));
+    -webkit-background-clip: text;
+    color: transparent;
+}

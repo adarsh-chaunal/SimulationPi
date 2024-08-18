@@ -1,0 +1,23 @@
+.home-animation {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    height: 500px;
+    width: 100%;
+    position: relative;
+}
+
+.home-animation-canvas {
+    display: block;
+    top: 0;
+    left: 0;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+/*
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}*/

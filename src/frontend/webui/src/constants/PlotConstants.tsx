@@ -1,5 +1,6 @@
 export const AXES = {
-    //PADDING: 40,
+    LABEL_PADDING: 30,
+    TICK_PADDING: 25,
     AXES_COLOR: 'white',
     NUMBER_OF_TICKS: 10,
     TICK_NUMBER_FONT: '12px Arial',

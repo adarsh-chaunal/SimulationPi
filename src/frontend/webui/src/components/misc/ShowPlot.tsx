@@ -92,7 +92,7 @@ const ShowPlot: React.FC = () => {
           {/*<Contour data={contourData} width={400} height={400} levels={5} />*/}
 
           <h1>Quiver Plot</h1>
-          <Plot type={'quiver'} data={quiverData} width={700} height={600} showAxes={true} />
+          <Plot type={'quiver'} data={quiverData} width={700} height={600} showAxes={true} showLabels={true} />
       </div>
   );
 }

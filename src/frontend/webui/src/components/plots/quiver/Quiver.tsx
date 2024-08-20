@@ -1,16 +1,16 @@
 import React, { useEffect, useRef } from "react";
 import QuiverProps from "../../../interfaces/plot/QuiverProps";
-import { PLOT } from "../../../constants/plotConstants";
+import { AXES, PLOT } from "../../../constants/plotConstants";
 import { drawArrow, drawAxes } from "../../../utils/plotUtils";
 
-const Quiver: React.FC<QuiverProps> = ({ data, width, height, showAxes }) => {
+const Quiver: React.FC<QuiverProps> = ({ data, width, height, showAxes, showLabels }) => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
 
-    const padding = 50;
+    const padding = (showAxes ? AXES.TICK_PADDING : 0) + (showLabels ? AXES.LABEL_PADDING : 0);
 
     useEffect(() => {
         drawVectorFields();
-    }, [data, width, height, showAxes]);
+    }, [data, width, height, showAxes, showLabels]);
 
     const drawVectorFields = () => {
         const canvas = canvasRef.current;
@@ -64,7 +64,7 @@ const Quiver: React.FC<QuiverProps> = ({ data, width, height, showAxes }) => {
             }
         }
 
-        if (showAxes) drawAxes(canvasContext, minX, maxX, minY, maxY, width, height, padding);
+        if (showAxes) drawAxes(canvasContext, minX, maxX, minY, maxY, width, height, showLabels);
     }
     
     return (

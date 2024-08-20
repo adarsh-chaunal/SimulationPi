@@ -7,7 +7,10 @@ export const drawAxes = (canvasContext: CanvasRenderingContext2D,
     maxY: number,
     width: number,
     height: number,
-    padding: number) => {
+    showLabels: boolean) => {
+
+    const padding = AXES.TICK_PADDING + (showLabels ? AXES.LABEL_PADDING : 0)
+
     const normalizationFactorX = (width - 2 * padding) / (maxX - minX);
     const normalizationFactorY = (height - 2 * padding) / (maxY - minY);
 
@@ -54,6 +57,29 @@ export const drawAxes = (canvasContext: CanvasRenderingContext2D,
         canvasContext.textAlign = AXES.TICK_Y_AXIS_NUMBER_ALIGN as CanvasTextAlign;
         canvasContext.fillText(i.toFixed(AXES.TICK_NUMBER_FRACTION_DIGITS), yAxisX - 10, yPos + 3);
     }
+
+    drawXYLabels(canvasContext, 'X-Axis', 'Y-Axis', width, height);
+
+}
+
+const drawXYLabels = (canvasContext: CanvasRenderingContext2D,
+    xLabel: string,
+    yLabel: string,
+    width: number,
+    height: number
+) => {
+    canvasContext.font = '16px Arial'; // you can customize the font size and family
+    canvasContext.fillStyle = 'white'; // customize the color
+    canvasContext.textAlign = 'center';
+    canvasContext.fillText(xLabel, width / 2, height - AXES.LABEL_PADDING / 2);
+
+    // Draw Y-Axis Label
+    canvasContext.save(); // save the current state before rotating
+    canvasContext.translate(AXES.LABEL_PADDING / 2, height / 2);
+    canvasContext.rotate(-Math.PI / 2); // rotate the text by 90 degrees
+    canvasContext.textAlign = 'center';
+    canvasContext.fillText(yLabel, 0, 0);
+    canvasContext.restore(); // restore the state so it doesn't affect other drawings
 }
 
 export const drawArrow = (canvasContext: CanvasRenderingContext2D,

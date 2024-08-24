@@ -6,7 +6,7 @@ public class BaseEntity
 {
     public int ID { get; set; }
 
-    public Guid UniqueID { get; set; }
+    public Guid UniqueID { get; set; } = Guid.NewGuid();
 
     private readonly List<BaseEvent> _domainEvents = new();
 

@@ -11,5 +11,4 @@ public class PlotTypeDetails: BaseAuditableEntity
     public double ArrowSize { get; set; }
 
     public string ColourMap { get; set; } = string.Empty;
-
 }

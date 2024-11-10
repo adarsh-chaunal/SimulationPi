@@ -1,0 +1,12 @@
+.pagination-bar {
+  display: flex;
+  padding: 3px 10px 3px 10px;
+}
+
+.pagination-go-to-page {
+  border: 1px solid white;
+  border-radius: 5px;
+  padding: 1px 8px;
+  margin: 5px;
+  cursor: pointer;
+}

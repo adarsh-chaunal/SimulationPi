@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import QuiverProps from "../../../interfaces/plot/QuiverProps";
+import QuiverProps from "../../../interfaces/plots/QuiverProps";
 import { AXES, PLOT } from "../../../constants/plotConstants";
 import { drawArrow, drawAxes } from "../../../utils/plotUtils";
 

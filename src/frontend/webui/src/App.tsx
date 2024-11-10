@@ -7,6 +7,7 @@ import Footer from './components/layout/Footer'
 import NavBar from './components/layout/NavBar'
 import { Route, Routes } from 'react-router-dom';
 import ShowPlot from './components/misc/ShowPlot';
+import PlotList from './components/plots/PlotList';
 
 function App() {
     return (
@@ -15,6 +16,8 @@ function App() {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/showPlot" element={<ShowPlot />} />
+                <Route path="/plots" element={<PlotList />} />
+                <Route path="" element={<></>} />
             </Routes>
             <Footer />
         </>

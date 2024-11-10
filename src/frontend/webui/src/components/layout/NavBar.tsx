@@ -31,6 +31,9 @@ function NavBar() {
                               <Link className="nav-link" to="/showPlot">Show Plot</Link>
                           </li>
                           <li className="nav-item">
+                            <Link className="nav-link" to="/plots">Plots</Link>
+                          </li>
+                          <li className="nav-item">
                               <a className="nav-link" href="#">Topics</a>
                           </li>
                           <li className="nav-item">

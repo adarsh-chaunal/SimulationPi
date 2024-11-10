@@ -22,6 +22,7 @@
     <SqlServerVerification>False</SqlServerVerification>
     <IncludeCompositeObjects>True</IncludeCompositeObjects>
     <TargetDatabaseSet>True</TargetDatabaseSet>
+    <IncludeSchemaNameInFileName>False</IncludeSchemaNameInFileName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>bin\Release\</OutputPath>
@@ -63,5 +64,8 @@
     <Folder Include="Scripts" />
     <Folder Include="Data" />
     <Folder Include="Schemas" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="Schemas\CreateUser.sql" />
   </ItemGroup>
 </Project>

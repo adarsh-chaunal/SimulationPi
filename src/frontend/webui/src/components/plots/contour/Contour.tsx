@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import ContourProps from "../../../interfaces/plot/ContourProps";
+import ContourProps from "../../../interfaces/plots/ContourProps";
 
 const Contour: React.FC<ContourProps> = ({ data, width, height, levels, colorScheme }) => {
     const canvasRef = useRef<HTMLCanvasElement>(null);

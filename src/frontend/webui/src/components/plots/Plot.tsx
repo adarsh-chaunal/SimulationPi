@@ -1,7 +1,7 @@
 import Contour from './contour/Contour';
 import Quiver from './quiver/Quiver';
-import ContourProps from '../../interfaces/plot/ContourProps';
-import QuiverProps from '../../interfaces/plot/QuiverProps';
+import ContourProps from '../../interfaces/plots/ContourProps';
+import QuiverProps from '../../interfaces/plots/QuiverProps';
 
 
 type PlotType = 'contour' | 'quiver';

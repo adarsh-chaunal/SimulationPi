@@ -1,0 +1,75 @@
+.action-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 5px 5px;
+  font-size: var(--font-size-primary);
+  font-weight: 500;
+  color: var(--button-text-color);
+  background-color: transparent;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  /* transition: background-color 0.3s ease, box-shadow 0.3s ease; */
+  /* box-shadow: 2px 2px 4px var(--shadow-secondary-color); */
+}
+
+/* .add-action-button {
+    background-color: var(--button-add-color);
+  }
+  
+  .edit-action-button {
+    background-color: var(--button-edit-color);
+  }
+  
+  .view-action-button {
+    background-color: var(--button-view-color);
+  }
+  
+  .delete-action-button {
+    background-color: var(--button-delete-color);
+  } */
+
+.add-action-button:hover {
+  background-color: var(--button-add-hover);
+  /* box-shadow: 0 4px 8px var(--shadow-primary-color); */
+}
+
+.edit-action-button:hover {
+  background-color: var(--button-edit-hover);
+  /* box-shadow: 0 4px 8px var(--shadow-primary-color); */
+}
+
+.view-action-button:hover {
+  background-color: var(--button-view-hover);
+  /* box-shadow: 0 4px 8px var(--shadow-primary-color); */
+}
+
+.delete-action-button:hover {
+  background-color: var(--button-delete-hover);
+  /* box-shadow: 4px 4px 8px var(--shadow-primary-color); */
+}
+
+[data-theme="dark"] .add-action-button:hover {
+  background-color: var(--button-add-hover-dark);
+}
+
+[data-theme="dark"] .edit-action-button:hover {
+  background-color: var(--button-edit-hover-dark);
+}
+
+[data-theme="dark"] .view-action-button:hover {
+  background-color: var(--button-view-hover-dark);
+}
+
+[data-theme="dark"] .delete-action-button:hover {
+  background-color: var(--button-delete-hover-dark);
+}
+
+/* Icon styling */
+.action-button svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor; /* Matches the button text color */
+}

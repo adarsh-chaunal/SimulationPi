@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { QuiverData } from "../../interfaces/plot/QuiverProps";
+import { QuiverData } from "../../interfaces/plots/QuiverProps";
 import Plot from "../plots/Plot";
 
 const ShowPlot: React.FC = () => {

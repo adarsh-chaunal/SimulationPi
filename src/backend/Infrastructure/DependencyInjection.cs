@@ -1,21 +1,20 @@
 ﻿using Infrastructure.Data;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
-namespace Infrastructure;
+namespace Microsoft.Extensions.DependencyInjection;
 
 public static class DependencyInjection
 {
-    public static IServiceCollection AddInfrastructureServices(
-                                        this IServiceCollection services,
-                                        IConfiguration configuration)
+    public static IHostApplicationBuilder AddInfrastructureServices(this IHostApplicationBuilder builder)
     {
         // Get the connection string and database name from configuration
         //var connectionString = configuration.GetConnectionString("DefaultConnection");
         //var databaseName = configuration.GetSection("DatabaseName");
         //services.AddScoped<IDatabaseInitializer>(provider => new DatabaseInitializer());
-        services.AddSingleton<DatabaseInitializer>();
 
-        return services;
+        builder.Services.AddSingleton<DatabaseInitializer>();
+
+        return builder;
     }
 }

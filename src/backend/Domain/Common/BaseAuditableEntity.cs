@@ -9,4 +9,8 @@ public class BaseAuditableEntity : BaseEntity
     public DateTimeOffset LastModifiedAt { get; set; }
 
     public string? LastModifiedBy { get; set; }
+
+    public bool IsActive { get; set; }
+
+    public bool IsArchived { get; set; }
 }

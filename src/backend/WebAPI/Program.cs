@@ -71,15 +71,9 @@ app.MapRazorPages();
 // Endpoint configuration
 //app.Map("/", () => Results.Redirect("/api"));
 
-//app.MapGet("/test", () => "Hello, Swagger!");
-
 //app.MapDefaultEndpoint();
 
 app.MapEndpoints();
-
-app.MapGet("/test", () => "Hello, Swagger!")
-   .WithName("TestEndpoint")
-   .WithOpenApi();
 
 app.Run();
 

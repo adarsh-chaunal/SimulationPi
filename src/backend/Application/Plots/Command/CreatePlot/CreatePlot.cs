@@ -3,12 +3,12 @@ using MediatR;
 
 namespace Application.Plots.Command.CreatePlot;
 
-public record CreatePlotCommand : IRequest<bool>
+public record CreatePlotCommand : IRequest<string>
 {
     public required Plot Plot { get; init; }
 }
 
-public class CreatePlotCommandHandler : IRequestHandler<CreatePlotCommand, bool>
+public class CreatePlotCommandHandler : IRequestHandler<CreatePlotCommand, string>
 {
     #region Fields
 
@@ -18,9 +18,9 @@ public class CreatePlotCommandHandler : IRequestHandler<CreatePlotCommand, bool>
 
     #region Methods
 
-    public Task<bool> Handle(CreatePlotCommand request, CancellationToken cancellationToken)
+    public Task<string> Handle(CreatePlotCommand request, CancellationToken cancellationToken)
     {
-        return Task.FromResult(true);
+        return Task.FromResult("id");
     } 
 
     #endregion

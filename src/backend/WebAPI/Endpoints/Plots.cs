@@ -5,6 +5,7 @@ using Application.Plots.Queries.GetPlot;
 using Application.Plots.Queries.GetPlotsWithPagination;
 using Domain.Entities;
 using MediatR;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using WebAPI.Infrastructure;
 
@@ -22,30 +23,40 @@ public class Plots : EndpointGroupBase
             .MapDelete(Delete, "/{id}");
     }
 
-    public async Task<List<Plot>> GetAll(ISender sender, [AsParameters] GetPlotsWithPaginationQuery query)
+    public async Task<Ok<List<Plot>>> GetAll(ISender sender, [AsParameters] GetPlotsWithPaginationQuery query)
     {
-        return await sender.Send(query);
+        var viewModel = await sender.Send(query);
+
+        return TypedResults.Ok(viewModel);
     }
 
-    public async Task<Plot> Get(ISender sender, string id)
+    public async Task<Ok<Plot>> Get(ISender sender, string id)
     {
-        return await sender.Send(new GetPlotQuery { ID = id });
+        var viewModel = await sender.Send(new GetPlotQuery { ID = id });
+
+        return TypedResults.Ok(viewModel);
     }
 
-    public async Task<bool> Create(ISender sender, [FromBody] CreatePlotCommand command)
+    public async Task<Created<string>> Create(ISender sender, [FromBody] CreatePlotCommand command)
     {
-        return await sender.Send(command);
+        var id = await sender.Send(command);
+
+        return TypedResults.Created($"/{typeof(Plot)}/{id}", id);
     }
 
-    public async Task<Plot> Update(ISender sender, string id, [FromBody] UpdatePlotCommand command)
+    public async Task<Results<NoContent, BadRequest>> Update(ISender sender, string id, [FromBody] UpdatePlotCommand command)
     {
-        return command.Plot.UniqueID == id
-            ? await sender.Send(command)
-            : new(); // return "invalid request" error
+        if (command.Plot.UniqueID != id) return TypedResults.BadRequest();
+
+        await sender.Send(command);
+
+        return TypedResults.NoContent();
     }
 
-    public async Task<bool> Delete(ISender sender, string id)
+    public async Task<NoContent> Delete(ISender sender, string id)
     {
-        return await sender.Send(new DeletePlotCommand { ID = id });
+        await sender.Send(new DeletePlotCommand { ID = id });
+
+        return TypedResults.NoContent();
     }
 }

@@ -2,9 +2,9 @@ using WebAPI.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.AddWebApiServices();
-builder.AddInfrastructureServices();
 builder.AddApplicationServices();
+builder.AddInfrastructureServices();
+builder.AddWebApiServices();
 
 var app = builder.Build();
 

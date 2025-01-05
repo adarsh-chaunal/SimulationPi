@@ -1,9 +1,9 @@
-﻿using Application.Plots.Command.CreatePlot;
+﻿using Application.Common.Dtos;
+using Application.Plots.Command.CreatePlot;
 using Application.Plots.Command.DeletePlot;
 using Application.Plots.Command.UpdatePlot;
 using Application.Plots.Queries.GetPlot;
 using Application.Plots.Queries.GetPlotsWithPagination;
-using Domain.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
@@ -23,30 +23,30 @@ public class Plots : EndpointGroupBase
             .MapDelete(Delete, "/{id}");
     }
 
-    public async Task<Ok<List<Plot>>> GetAll(ISender sender, [AsParameters] GetPlotsWithPaginationQuery query)
+    public async Task<Ok<List<PlotDto>>> GetAll(ISender sender, [AsParameters] GetPlotsWithPaginationQuery query)
     {
         var viewModel = await sender.Send(query);
 
         return TypedResults.Ok(viewModel);
     }
 
-    public async Task<Ok<Plot>> Get(ISender sender, string id)
+    public async Task<IResult> Get(ISender sender, string id)
     {
         var viewModel = await sender.Send(new GetPlotQuery { ID = id });
 
-        return TypedResults.Ok(viewModel);
+        return viewModel == null ? Results.NotFound(new { Message = $"Plot with {id} is not found" }) : Results.Ok(viewModel);
     }
 
     public async Task<Created<string>> Create(ISender sender, [FromBody] CreatePlotCommand command)
     {
         var id = await sender.Send(command);
 
-        return TypedResults.Created($"/{typeof(Plot)}/{id}", id);
+        return TypedResults.Created($"/{typeof(PlotDto)}/{id}", id);
     }
 
     public async Task<Results<NoContent, BadRequest>> Update(ISender sender, string id, [FromBody] UpdatePlotCommand command)
     {
-        if (command.Plot.UniqueID != id) return TypedResults.BadRequest();
+        if (command.Plot.ID != id) return TypedResults.BadRequest();
 
         await sender.Send(command);
 

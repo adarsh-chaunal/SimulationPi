@@ -1,0 +1,18 @@
+﻿CREATE TABLE [dbo].[PlotHistory]
+(
+	HistoryID INT PRIMARY KEY IDENTITY(1,1),
+    PlotID INT NOT NULL, 
+    MediaID INT NULL,
+    UniqueID NVARCHAR(40) NOT NULL, 
+    Name NVARCHAR(255) NOT NULL,
+    Description NVARCHAR(MAX) NULL,
+    DisplayOrder INT NOT NULL,
+    CreatedAt DATETIMEOFFSET NOT NULL,
+    CreatedBy NVARCHAR(40) NOT NULL,
+    LastModifiedAt DATETIMEOFFSET NOT NULL,
+    LastModifiedBy NVARCHAR(40) NOT NULL,
+    IsArchived BIT NOT NULL,
+    IsActive BIT NOT NULL,
+    Operation NVARCHAR(6) NOT NULL,
+    ChangeTimestamp DATETIMEOFFSET NOT NULL DEFAULT SYSDATETIMEOFFSET()
+);

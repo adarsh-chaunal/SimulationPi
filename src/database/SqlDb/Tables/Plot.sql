@@ -1,0 +1,19 @@
+﻿CREATE TABLE [dbo].[Plot]
+(
+	ID INT PRIMARY KEY IDENTITY(1,1), 
+    Plot_MediaID INT REFERENCES Media(ID),
+    UniqueID NVARCHAR(40) NOT NULL UNIQUE, 
+    Name NVARCHAR(255) NOT NULL,
+    Description NVARCHAR(MAX) NULL,
+    DisplayOrder INT NOT NULL,
+    CreatedAt DATETIMEOFFSET NOT NULL,
+    CreatedBy NVARCHAR(40) NOT NULL,
+    LastModifiedAt DATETIMEOFFSET NOT NULL,
+    LastModifiedBy NVARCHAR(40) NOT NULL,
+    IsArchived BIT NOT NULL,
+    IsActive BIT NOT NULL
+);
+
+GO
+
+CREATE UNIQUE INDEX IX_Plot_UniqueID ON Plot(UniqueID);

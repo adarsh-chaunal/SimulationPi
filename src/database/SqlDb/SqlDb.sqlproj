@@ -66,6 +66,14 @@
     <Folder Include="Schemas" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="Schemas\CreateUser.sql" />
+    <Build Include="Tables\Plot.sql" />
+    <Build Include="Tables\User.sql" />
+    <Build Include="Tables\Media.sql" />
+    <Build Include="Tables\PlotHistory.sql" />
+    <Build Include="Tables\MediaHistory.sql" />
+    <Build Include="StoredProcedures\usp_ManagePlot.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SqlDb.publish.xml" />
   </ItemGroup>
 </Project>

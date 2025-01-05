@@ -1,30 +1,41 @@
-﻿using Domain.Entities;
+﻿using Application.Common.Dtos;
 using MediatR;
 
 namespace Application.Plots.Command.UpdatePlot;
 
 #region Command
 
-public record UpdatePlotCommand : IRequest<Plot>
+public record UpdatePlotCommand : IRequest<PlotDto>
 {
-    public Plot Plot { get; init; }
+    public required PlotDto Plot { get; init; }
 }
 
 #endregion
 
 #region Handler
 
-public class UpdatePlotCommandHandler : IRequestHandler<UpdatePlotCommand, Plot>
+public class UpdatePlotCommandHandler : IRequestHandler<UpdatePlotCommand, PlotDto>
 {
     #region Fields
 
 
     #endregion
 
+    #region Ctor
+
+    public UpdatePlotCommandHandler()
+    {
+        
+    }
+
+    #endregion
+
     #region Methods
 
-    public async Task<Plot> Handle(UpdatePlotCommand command, CancellationToken cancellation)
+    public async Task<PlotDto> Handle(UpdatePlotCommand command, CancellationToken cancellation)
     {
+
+
         return new();
     }
 

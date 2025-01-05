@@ -1,11 +1,11 @@
-﻿using Domain.Entities;
+﻿using Application.Common.Dtos;
 using MediatR;
 
 namespace Application.Plots.Queries.GetPlotsWithPagination;
 
 #region Query
 
-public record GetPlotsWithPaginationQuery : IRequest<List<Plot>>
+public record GetPlotsWithPaginationQuery : IRequest<List<PlotDto>>
 {
     public int PageNumber { get; init; }
 
@@ -16,11 +16,11 @@ public record GetPlotsWithPaginationQuery : IRequest<List<Plot>>
 
 #region Handler
 
-public class GetPlotsWithPaginationQueryHandler : IRequestHandler<GetPlotsWithPaginationQuery, List<Plot>>
+public class GetPlotsWithPaginationQueryHandler : IRequestHandler<GetPlotsWithPaginationQuery, List<PlotDto>>
 {
     #region Method
 
-    public async Task<List<Plot>> Handle(GetPlotsWithPaginationQuery request, CancellationToken cancellationToken)
+    public async Task<List<PlotDto>> Handle(GetPlotsWithPaginationQuery request, CancellationToken cancellationToken)
     {
         return [];
         //throw new NotImplementedException();

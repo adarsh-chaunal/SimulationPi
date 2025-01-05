@@ -1,14 +1,17 @@
-﻿using Domain.Common;
+﻿using System.ComponentModel;
+using Domain.Common;
 
 namespace Domain.Entities;
 
 public class Plot : BaseAuditableEntity
 {
-    public string Name { get; set; }
+    public int Plot_MediaID { get; set; }
 
-    public string Description { get; set; }
+    public string Name { get; set; } = string.Empty;
 
-    public int Order { get; set; }
+    public string Description { get; set; } = string.Empty;
 
-    public Media? DisplayImage { get; set; }
+    public int DisplayOrder { get; set; }
+
+    public Media? Plot_Media { get; set; }
 }

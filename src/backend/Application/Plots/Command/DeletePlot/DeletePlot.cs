@@ -6,7 +6,7 @@ namespace Application.Plots.Command.DeletePlot;
 
 public record DeletePlotCommand : IRequest<bool>
 {
-    public string ID { get; init; }
+    public required string ID { get; init; }
 }
 
 #endregion

@@ -1,8 +1,9 @@
-﻿using Domain.Common;
+﻿namespace Application.Common.Dtos;
 
-namespace Domain.Entities;
-public class Media : BaseAuditableEntity
+public class MediaDto
 {
+    public string Id { get; set; } = string.Empty;
+
     public string Name { get; set; } = string.Empty;
 
     public string MIMEType { get; set; } = string.Empty;

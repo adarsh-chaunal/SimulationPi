@@ -18,7 +18,7 @@ const GridList: React.FC<GridListProps> = ({
   return (
     <div>
       {addCallback && (
-        <ActionButton actionType="add" onClick={addCallback}></ActionButton>
+        <ActionButton actionType="add" onClick={addCallback}>Create New Plot</ActionButton>
       )}
       <div
         className="grid-container"
@@ -28,7 +28,7 @@ const GridList: React.FC<GridListProps> = ({
           <GridListItem key={item.id} {...item} />
         ))}
       </div>
-      <PaginationBar {...updatedPaginationProps}></PaginationBar>
+      {/* <PaginationBar {...updatedPaginationProps}></PaginationBar> */}
     </div>
   );
 };

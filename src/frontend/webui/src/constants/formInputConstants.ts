@@ -1,0 +1,15 @@
+export const FORM_INPUT_TYPES = {
+    TEXT : 'text',
+    LARGE_TEXT : 'largeText',
+    PASSWORD: 'password',
+    NUMBER : 'number',
+    RADIO: 'radio',
+    CHECK:'check',
+    SELECT:'select',
+    MULTI_SELECT:'multiSelect',
+    TEXT_EDITOR: 'textEditor',
+    SLIDER: 'slider',
+    FILE_UPLOAD: 'fileUpload',
+    BUTTON: 'button',
+    HTML: 'html',
+} 

@@ -1,12 +1,14 @@
+import { useState } from "react";
 import GridListItemProps from "../../interfaces/lists/GridListItemProps";
 import PaginationProps from "../../interfaces/lists/PaginationProps";
 import GridList from "../lists/grid/GirdList";
+import FormDialog from "../dialogs/FormDialog";
 
 const PlotList: React.FC = () => {
   const sampleData: GridListItemProps[] = [
     {
       id: "1",
-      image: "https://via.placeholder.com/50x150",
+      image: "https://placehold.co/50x150",
       imageAlt: "Sample image 1",
       title: "Item 1",
       description: "This is a description for item 1.",
@@ -16,11 +18,11 @@ const PlotList: React.FC = () => {
         rightText: "Right 1",
       },
       viewCallback: () => {},
-      deleteCallback: () => {}
+      deleteCallback: () => {},
     },
     {
       id: "2",
-      image: "https://via.placeholder.com/250x100",
+      image: "https://placehold.co/250x100",
       imageAlt: "Sample image 2",
       title: "Item 2",
       description: "This is a description for item 2.",
@@ -30,11 +32,11 @@ const PlotList: React.FC = () => {
         rightText: "Right 2",
       },
       editCallback: () => {},
-      deleteCallback: () => {}
+      deleteCallback: () => {},
     },
     {
       id: "3",
-      image: "https://via.placeholder.com/50x100",
+      image: "https://placehold.co/50x100",
       imageAlt: "Sample image 3",
       title: "Item 3",
       description: "This is a description for item 3.",
@@ -44,11 +46,11 @@ const PlotList: React.FC = () => {
         rightText: "Right 3",
       },
       editCallback: () => {},
-      viewCallback: () => {}
+      viewCallback: () => {},
     },
     {
       id: "4",
-      image: "https://via.placeholder.com/250x300",
+      image: "https://placehold.co/250x300",
       imageAlt: "Sample image 4",
       title: "Item 4",
       description: "This is a description for item 4.",
@@ -59,11 +61,11 @@ const PlotList: React.FC = () => {
       },
       editCallback: () => {},
       viewCallback: () => {},
-      deleteCallback: () => {}
+      deleteCallback: () => {},
     },
     {
       id: "5",
-      image: "https://via.placeholder.com/250x350",
+      image: "https://placehold.co/250x350",
       imageAlt: "Sample image 5",
       title: "Item 5",
       description: "This is a description for item 5.",
@@ -74,11 +76,11 @@ const PlotList: React.FC = () => {
       },
       editCallback: () => {},
       viewCallback: () => {},
-      deleteCallback: () => {}
+      deleteCallback: () => {},
     },
     {
       id: "6",
-      image: "https://via.placeholder.com/250x400",
+      image: "https://placehold.co/250x400",
       imageAlt: "Sample image 6",
       title: "Item 6",
       description: "This is a description for item 6.",
@@ -89,19 +91,35 @@ const PlotList: React.FC = () => {
       },
       editCallback: () => {},
       viewCallback: () => {},
-      deleteCallback: () => {}
+      deleteCallback: () => {},
     },
   ];
 
   const paginationProps: PaginationProps = {
-    currentPage : 1,
-    itemsPerPage : 5,
-    onPageChange : () => {}
-  }
+    currentPage: 1,
+    itemsPerPage: 5,
+    onPageChange: () => {},
+  };
+
+  const [isAddPlotDialogOpen, setIsAddPlotDialogOpen] = useState(false);
+
+  const openAddPlotDialogHandler = () => {
+    setIsAddPlotDialogOpen(true);
+  };
+
+  const closeAddDialogHandler = () => {
+    setIsAddPlotDialogOpen(false);
+  };
 
   return (
     <div>
-      <GridList columns={5} items={sampleData} paginationProps={paginationProps} />
+      <GridList
+        columns={5}
+        items={sampleData}
+        addCallback={openAddPlotDialogHandler}
+        paginationProps={paginationProps}
+      />
+      {isAddPlotDialogOpen && <FormDialog CloseDialogHandler={closeAddDialogHandler} />}
     </div>
   );
 };

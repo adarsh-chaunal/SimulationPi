@@ -1,0 +1,27 @@
+﻿CREATE TABLE [dbo].[Users]
+(
+	[ID] INT NOT NULL PRIMARY KEY IDENTITY(1, 1),
+    [UniqueID] NVARCHAR(40) UNIQUE NOT NULL,
+    [FirstName] NVARCHAR(256) NOT NULL,
+    [MiddleName] NVARCHAR(256) NULL,
+    [LastName] NVARCHAR(256) NULL,
+    [Email] NVARCHAR(256) NOT NULL,
+    [NormalizedEmail] NVARCHAR(256) NULL,
+    [IsEmailConfirmed] BIT NOT NULL DEFAULT 0,
+    [PasswordHash] NVARCHAR (MAX) NOT NULL,
+    [LockoutEnd] DATETIMEOFFSET NULL,
+    [PhoneNumber] NVARCHAR(15) NULL,
+    [PhoneNumberConfirmed] BIT NOT NULL DEFAULT 0,
+    [LockoutEnabled] BIT NOT NULL DEFAULT 1,
+    [AccessFailedCount] INT NOT NULL DEFAULT 0,
+    --[CreatedAt] DATETIMEOFFSET NOT NULL,
+    --[CreatedBy] NVARCHAR(40) NOT NULL,
+    --[LastModifiedAt] DATETIMEOFFSET NOT NULL,
+    --[LastModifiedBy] NVARCHAR(40) NOT NULL,
+    --[IsArchived] BIT NOT NULL,
+    --[IsActive] BIT NOT NULL,
+    [ValidFrom] DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL,
+    [ValidTo] DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL,
+    PERIOD FOR SYSTEM_TIME ([ValidFrom], [ValidTo])
+)
+WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = [dbo].[UsersHistory], DATA_CONSISTENCY_CHECK = ON))

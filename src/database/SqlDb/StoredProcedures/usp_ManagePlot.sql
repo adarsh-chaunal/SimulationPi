@@ -2,7 +2,7 @@
     @operationType VARCHAR(10) NOT NULL,
     @id INT NULL,
     @uniqueID VARCHAR(255) NULL,
-	@plot_MediaID INT NULL,
+	@plot_FileID INT NULL,
     @name NVARCHAR(255) NULL,
     @description NVARCHAR(MAX) NULL,
     @displayOrder INT NULL,

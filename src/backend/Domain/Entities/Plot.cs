@@ -5,7 +5,7 @@ namespace Domain.Entities;
 
 public class Plot : BaseAuditableEntity
 {
-    public int Plot_MediaID { get; set; }
+    public int? Plot_FileID { get; set; }
 
     public string Name { get; set; } = string.Empty;
 
@@ -13,5 +13,5 @@ public class Plot : BaseAuditableEntity
 
     public int DisplayOrder { get; set; }
 
-    public Media? Plot_Media { get; set; }
+    public File? Plot_File { get; set; }
 }

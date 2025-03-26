@@ -3,7 +3,7 @@
 namespace Domain.Entities;
 public class User : BaseAuditableEntity
 {
-    public int? MediaID { get; set; }
+    public int? FileID { get; set; }
 
     public required string FirstName { get; set; }
 
@@ -25,5 +25,5 @@ public class User : BaseAuditableEntity
 
     public string? Country { get; set; }
 
-    public Media? Media { get; set; }
+    public File? File { get; set; }
 }

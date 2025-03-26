@@ -27,7 +27,7 @@ public class PlotService : IPlotService
 
     #region Methods
 
-    public async Task<Plot?> Get(string id)
+    public async Task<Plot?> GetAsync(string id)
     {
         using (var connection = _connectionFactory.CreateConnection())
         {
@@ -42,22 +42,31 @@ public class PlotService : IPlotService
         }
     }
 
-    public async Task<bool> Create(Plot plot)
+    public async Task<bool> CreateAsync(Plot plot)
     {
-        using (var connection = _connectionFactory.CreateConnection())
+        try
         {
-            var dynamicParameters = new DynamicParameters();
+            using (var connection = _connectionFactory.CreateConnection())
+            {
+                var dynamicParameters = new DynamicParameters(plot);
 
-            dynamicParameters.Add(QueryParameters.OPERATION_TYPE, QueryParameters.INSERT);
-            dynamicParameters.Add(QueryParameters.STATUS_MESSAGE, dbType: DbType.String, direction: ParameterDirection.Output);
-            dynamicParameters.AddProperties(plot); // getting dynamic parameters from an extension method.
+                dynamicParameters.Add(QueryParameters.OPERATION_TYPE, QueryParameters.INSERT);
+                dynamicParameters.Add(QueryParameters.STATUS_MESSAGE, dbType: DbType.String, direction: ParameterDirection.Output);
+                //dynamic
+                //dynamicPara+meters.AddProperties(plot); // getting dynamic parameters from an extension method.
 
-            await connection.ExecuteAsync(QueryHolder.MANAGE_PLOT,
-                                        dynamicParameters,
-                                        commandType: CommandType.StoredProcedure);
+                await connection.ExecuteAsync(QueryHolder.MANAGE_PLOT,
+                                            dynamicParameters,
+                                            commandType: CommandType.StoredProcedure);
 
-            return dynamicParameters.Get<string>(QueryParameters.STATUS_MESSAGE) == "INSERTED";
+                return dynamicParameters.Get<string>(QueryParameters.STATUS_MESSAGE) == "INSERTED";
+            }
         }
+        catch (Exception ex)
+        {
+            throw;
+        }
+        
     }
 
     #endregion

@@ -1,7 +1,7 @@
 ﻿using Application.Common.Dtos;
 using MediatR;
 
-namespace Application.Plots.Command.UpdatePlot;
+namespace Application.Plots.Commands.UpdatePlot;
 
 #region Command
 

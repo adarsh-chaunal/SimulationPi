@@ -4,7 +4,7 @@ namespace Application.Common.Interfaces;
 
 public interface IPlotService
 {
-    Task<Plot?> Get(string id);
+    Task<Plot?> GetAsync(string id);
 
-    Task<bool> Create(Plot plot);
+    Task<bool> CreateAsync(Plot plot);
 }

@@ -1,7 +1,7 @@
 ﻿using Application.Common.Dtos;
-using Application.Plots.Command.CreatePlot;
-using Application.Plots.Command.DeletePlot;
-using Application.Plots.Command.UpdatePlot;
+using Application.Plots.Commands.CreatePlot;
+using Application.Plots.Commands.DeletePlot;
+using Application.Plots.Commands.UpdatePlot;
 using Application.Plots.Queries.GetPlot;
 using Application.Plots.Queries.GetPlotsWithPagination;
 using MediatR;
@@ -46,7 +46,7 @@ public class Plots : EndpointGroupBase
 
     public async Task<Results<NoContent, BadRequest>> Update(ISender sender, string id, [FromBody] UpdatePlotCommand command)
     {
-        if (command.Plot.ID != id) return TypedResults.BadRequest();
+        if (command.Plot.UniqueID != id) return TypedResults.BadRequest();
 
         await sender.Send(command);
 

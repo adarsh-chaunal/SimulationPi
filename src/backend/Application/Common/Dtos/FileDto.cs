@@ -1,18 +1,18 @@
 ﻿namespace Application.Common.Dtos;
 
-public class PlotDto
+public class FileDto
 {
     public int? ID { get; set; }
 
     public string? UniqueID { get; set; }
 
-    public int? FileID { get; set; }
-
     public string Name { get; set; } = string.Empty;
 
-    public string Description { get; set; } = string.Empty;
+    public string MIMEType { get; set; } = string.Empty;
 
-    public int DisplayOrder { get; set; }
+    public string Path { get; set; } = string.Empty;
+
+    public string Extension { get; set; } = string.Empty;
 
     public string? CreatedBy { get; set; }
 
@@ -21,8 +21,4 @@ public class PlotDto
     public string? LastModifiedBy { get; set; }
 
     public DateTimeOffset? LastModifiedAt { get; set; }
-
-    public bool IsActive { get; set; }
-
-    public FileDto? File { get; set; }
 }

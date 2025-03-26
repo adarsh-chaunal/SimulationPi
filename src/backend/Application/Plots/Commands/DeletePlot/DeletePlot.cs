@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace Application.Plots.Command.DeletePlot;
+namespace Application.Plots.Commands.DeletePlot;
 
 #region Command
 

@@ -1,7 +1,7 @@
 ﻿using Domain.Common;
 
 namespace Domain.Entities;
-public class Media : BaseAuditableEntity
+public class File : BaseAuditableEntity
 {
     public string Name { get; set; } = string.Empty;
 

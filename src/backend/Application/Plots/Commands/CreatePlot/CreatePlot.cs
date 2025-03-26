@@ -1,9 +1,10 @@
 ﻿using Application.Common.Dtos;
 using Application.Common.Interfaces;
+using AutoMapper;
 using Domain.Entities;
 using MediatR;
 
-namespace Application.Plots.Command.CreatePlot;
+namespace Application.Plots.Commands.CreatePlot;
 
 public record CreatePlotCommand : IRequest<string>
 {
@@ -15,15 +16,18 @@ public class CreatePlotCommandHandler : IRequestHandler<CreatePlotCommand, strin
     #region Fields
 
     private readonly IPlotService _plotService;
+    private readonly IMapper _mapper;
 
 
     #endregion
 
     #region Ctor
 
-    public CreatePlotCommandHandler(IPlotService plotService)
+    public CreatePlotCommandHandler(IPlotService plotService,
+                IMapper mapper)
     {
         _plotService = plotService;
+        _mapper = mapper;
     }
 
     #endregion
@@ -32,19 +36,9 @@ public class CreatePlotCommandHandler : IRequestHandler<CreatePlotCommand, strin
 
     public async Task<string> Handle(CreatePlotCommand request, CancellationToken cancellationToken)
     {
-        var plot = new Plot()
-        {
-            UniqueID = Guid.NewGuid().ToString(),
-            Name = request.Plot.Name,
-            Description = request.Plot.Description,
-            CreatedAt = DateTimeOffset.Now,
-            CreatedBy = "",
-            LastModifiedAt = DateTimeOffset.Now,
-            LastModifiedBy = "",
-            IsActive = request.Plot.IsActive
-        };
+        var plot = _mapper.Map<Plot>(request.Plot);
 
-        var isSuccess = await _plotService.Create(plot);
+        var isSuccess = await _plotService.CreateAsync(plot);
 
         if (isSuccess)
         {

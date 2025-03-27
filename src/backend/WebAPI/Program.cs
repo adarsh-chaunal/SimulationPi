@@ -1,4 +1,5 @@
 using WebAPI.Infrastructure;
+using WebAPI.Startup;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -59,7 +60,7 @@ app.MapRazorPages();
 //app.MapFallbackToPage("/index");
 
 // CORS configuration
-//
+app.AddCorsConfig();
 
 // Authentication configuration
 // 

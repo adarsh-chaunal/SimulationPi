@@ -1,6 +1,7 @@
 ﻿using Application.Common.Interfaces;
 using Microsoft.OpenApi.Models;
 using WebAPI.Services;
+using WebAPI.Startup;
 
 namespace Microsoft.Extensions.DependencyInjection;
 
@@ -24,6 +25,8 @@ public static class DependencyInjection
                 Version = "v1",
             });
         });
+
+        builder.Services.AddCorsServices();
 
         //builder.Services.AddOpenApiDocument((configure, sp) =>
         //{
